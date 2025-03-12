@@ -90,31 +90,31 @@
     
 
     <script>
-        fetch('fetch('https://bling011.github.io/json/courses.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Course Data:', data); // Debugging
-                const courseTable = document.getElementById('course-table');
-                courseTable.innerHTML = ''; // Clear table before adding
+     fetch('https://bling011.github.io/json/courses.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Course Data:', data); // Debugging
+        const courseTable = document.getElementById('course-table');
+        courseTable.innerHTML = ''; // Clear table before adding
 
-                data.courses.forEach(course => {
-                    let row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${course.year_level}</td>
-                        <td>${course.sem}</td>
-                        <td>${course.code}</td>
-                        <td>${course.description}</td>
-                        <td>${course.credit}</td>
-                    `;
-                    courseTable.appendChild(row);
-                });
-            })
-            .catch(error => console.error('Error fetching courses.json:', error));
-    </script>
+        data.courses.forEach(course => {
+            let row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${course.year_level}</td>
+                <td>${course.sem}</td>
+                <td>${course.code}</td>
+                <td>${course.description}</td>
+                <td>${course.credit}</td>
+            `;
+            courseTable.appendChild(row);
+        });
+    })
+    .catch(error => console.error('Error fetching courses.json:', error));
+
 </body>
 </html>
